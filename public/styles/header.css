@@ -1,0 +1,24 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: sandybrown;
+  background-image: url("/images/foggy-birds.png");
+}
+
+/* header > div {
+  border: solid 4px red;
+} */
+
+header .name {
+  color: #fff;
+  font-weight: 300;
+  margin: 0;
+}
+
+header .name .first {
+  font-weight: 600;
+}

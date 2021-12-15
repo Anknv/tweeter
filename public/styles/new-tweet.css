@@ -1,0 +1,32 @@
+section.new-tweet label[for="tweet-text"] {
+  display: block;
+  margin-bottom: -25px;
+  margin-top: 40px;
+}
+
+section.new-tweet #tweet-text {
+  background-color: transparent;
+  width: 100%;
+  border: 0;
+  color: #545149;
+  border-bottom: solid 4px #545149;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-bottom: 10px;
+}
+
+section.new-tweet .new-tweet-button {
+  display:flex;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+  margin-top: 6px;
+}
+
+section.new-tweet .new-tweet-button button[type="submit"] {
+  background-color: #4056A1;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 6px 10px 6px 10px;
+  border-radius: 6px;
+  box-shadow: 4px 6px 10px 0 #545454;
+}
