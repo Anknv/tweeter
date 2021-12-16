@@ -20,7 +20,8 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
@@ -50,7 +51,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <form method="post" action="/tweets/">
+        <form id='tweet-form' method="post" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="new-tweet-button">
@@ -59,48 +60,7 @@
           </div>
         </form>
       </section>
-      <section class="tweet-container">
-        <article class="tweet">
-          <header>
-            <div class="tweet-user">
-              <div class="user">
-                <img src="/images/girl.png" height="60" width="60">
-                <span>Rhoda Jacobs</span>
-              </div>
-              <span class="at">@MrsJacobs</span>
-            </div>
-            <div class="tweet-text">Hello world!</div>
-          </header>
-          <footer>
-            <span>10 days ago</span>
-            <div class="icons">
-              <i class="fas fa-flag"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="fas fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-        <article class="tweet">
-          <header>
-            <div class="tweet-user">
-              <div class="user">
-                <img src="/images/boy.png" height="60" width="60">
-                <span>Newton</span>
-              </div>
-              <span class="at">@SirIsaac</span>
-            </div>
-            <div class="tweet-text">If I have seen further it is by standing on the shoulders of giants</div>
-          </header>
-          <footer>
-            <span>10 days ago</span>
-            <div class="icons">
-              <i class="fas fa-flag"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="fas fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-      </section>
+      <section class="tweet-container"></section>
     </main>
   </body>
 </html>
