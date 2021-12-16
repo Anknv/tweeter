@@ -1,5 +1,5 @@
-header {
-  height: 400px;
+header.main-header {
+  height: 520px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -7,18 +7,15 @@ header {
   justify-content: flex-start;
   background-color: sandybrown;
   background-image: url("/images/foggy-birds.png");
+  padding-top: 120px;
 }
 
-/* header > div {
-  border: solid 4px red;
-} */
-
-header .name {
+header.main-header .name {
   color: #fff;
   font-weight: 300;
   margin: 0;
 }
 
-header .name .first {
+header.main-header .name .first {
   font-weight: 600;
 }

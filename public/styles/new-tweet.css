@@ -1,7 +1,7 @@
 section.new-tweet label[for="tweet-text"] {
   display: block;
-  margin-bottom: -25px;
   margin-top: 40px;
+  color: black;
 }
 
 section.new-tweet #tweet-text {
@@ -29,4 +29,8 @@ section.new-tweet .new-tweet-button button[type="submit"] {
   padding: 6px 10px 6px 10px;
   border-radius: 6px;
   box-shadow: 4px 6px 10px 0 #545454;
+}
+
+section.new-tweet .new-tweet-button .counter.red {
+  color: red;
 }

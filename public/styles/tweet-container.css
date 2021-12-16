@@ -1,0 +1,56 @@
+.tweet-container article {
+  border: solid 4px;
+  margin-top: 50px;
+  padding: 10px;
+  box-shadow: 7px 6px 0 0 #c5c3c3;
+}
+
+.tweet-container .tweet header {
+  padding: 15px 10px;
+}
+
+.tweet-container .tweet footer {
+  border-top: solid 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 10px 10px 6px 10px;
+}
+
+.tweet-container .tweet footer .icons {
+  color: #4056A1;
+}
+
+.tweet-container .tweet footer .icons .fas {
+  margin-right: 6px;
+}
+
+.tweet-container .tweet footer .icons .fas:hover {
+  color: #c1aa30;
+  cursor: pointer;
+}
+
+.tweet-container .tweet-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet-container .tweet-user .user {
+  display: flex;
+  align-items: center;
+}
+
+.tweet-container .tweet-user .user img {
+  margin-right: 10px;
+}
+
+.tweet-container .tweet-user .at {
+  color: #84abc3;
+}
+
+.tweet-container header .tweet-text {
+  padding: 24px 12px;
+  color: black;
+
+}
