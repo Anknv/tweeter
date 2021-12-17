@@ -56,5 +56,5 @@
 .tweet-container header .tweet-text {
   padding: 24px 12px;
   color: black;
-
+  word-break: break-word;
 }

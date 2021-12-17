@@ -54,6 +54,8 @@
         <form id='tweet-form' method="post" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
+          <div class="alert-error alert-empty">Tweet is empty!</div>
+          <div class="alert-error alert-tweet-length">Tweet is too long!</div>
           <div class="new-tweet-button">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>

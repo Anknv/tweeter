@@ -3,6 +3,11 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = function(tweetObj) {
   return $(`<article class="tweet">
@@ -14,7 +19,7 @@ const createTweetElement = function(tweetObj) {
         </div>
         <span class="at">${tweetObj.user.handle}</span>
       </div>
-      <div class="tweet-text">${tweetObj.content.text}</div>
+      <div class="tweet-text">${escape(tweetObj.content.text)}</div>
     </header>
     <footer>
       <span>${timeago.format(tweetObj.created_at)}</span>
@@ -27,61 +32,45 @@ const createTweetElement = function(tweetObj) {
   </article>`);
 };
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Leo Tolstoy",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SadRussian"
-    },
-    "content": {
-      "text": "The two most powerful warriors are patience and time."
-    },
-    "created_at": -3491116232227
-  }
-];
-
 const renderTweets = function(tweets) {
-  // loops through tweets
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
+  $('section.tweet-container').empty();
+  // loops through tweets, calls createTweetElement for each tweet
+  // takes return value and prepends it to the beginning of tweets container
   for (let item of tweets) {
     const $tweet = createTweetElement(item);
-    $('section.tweet-container').append($tweet);
+    $('section.tweet-container').prepend($tweet);
   }
 };
 
 $(document).ready(function() {
-  renderTweets(data);
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function(responseData) {
+        console.log('GET Success: ', responseData);
+        renderTweets(responseData);
+      });
+  };
+  loadTweets();
 
   $('#tweet-form').submit(function(event) {
     event.preventDefault();
-    const formData = $(this).serialize();
+    const formEl = this;
+    const formData = $(formEl).serializeArray();
+    console.log(formData);
+    let count = (formData[0].value).length;
+    if (count > 140) {
+      $('section.new-tweet .alert-error.alert-tweet-length').slideDown();
+      return;
+    }
+    if (count < 1) {
+      $('section.new-tweet .alert-error.alert-empty').slideDown();
+      return;
+    }
+
     $.ajax('/tweets', { method: 'POST', data: formData })
-      .then(function(responseData) {
-        console.log('Success: ', responseData);
+      .then(function() {
+        formEl.reset();
+        loadTweets();
       });
   });
 });
