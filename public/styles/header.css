@@ -5,7 +5,7 @@ header.main-header {
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: sandybrown;
+  background-color: #ff6237eb;
   background-image: url("/images/foggy-birds.png");
   padding-top: 120px;
 }

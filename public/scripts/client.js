@@ -3,12 +3,15 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
+//takes HTML template string and creates DOM nodes
+// escapes tweet text to prevent XSS
 const createTweetElement = function(tweetObj) {
   return $(`<article class="tweet">
     <header>
@@ -43,6 +46,7 @@ const renderTweets = function(tweets) {
 };
 
 $(document).ready(function() {
+  //gets tweets JSON and renders them
   const loadTweets = function() {
     $.ajax('/tweets', { method: 'GET' })
       .then(function(responseData) {
@@ -53,11 +57,13 @@ $(document).ready(function() {
   loadTweets();
 
   $('#tweet-form').submit(function(event) {
+    //prevents navigation to a new page
     event.preventDefault();
     const formEl = this;
+    //gets forms input data
     const formData = $(formEl).serializeArray();
-    console.log(formData);
     let count = (formData[0].value).length;
+    //shows error messages if count is invalid
     if (count > 140) {
       $('section.new-tweet .alert-error.alert-tweet-length').slideDown();
       return;
@@ -69,6 +75,7 @@ $(document).ready(function() {
 
     $.ajax('/tweets', { method: 'POST', data: formData })
       .then(function() {
+        //empties the form inputs
         formEl.reset();
         loadTweets();
       });
