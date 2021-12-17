@@ -45,3 +45,12 @@ section.new-tweet .new-tweet-button button[type="submit"] {
 section.new-tweet .new-tweet-button .counter.red {
   color: red;
 }
+
+@media only screen and (min-width: 1024px) {
+  section.new-tweet label[for="tweet-text"] {
+    margin-top: 0px;
+  }
+  main {
+    padding: 0 50px;
+  }
+}

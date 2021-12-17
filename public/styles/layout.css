@@ -16,6 +16,8 @@ html {
 
 body {
   color: #545149;
+  display: flex;
+  flex-direction: column;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -25,7 +27,20 @@ main {
 width: 90%;
 margin-left: auto;
 margin-right: auto;
-/* background-color: ; */
 font-size: 24px;
 font-family: 'Source Sans Pro', sans-serif;
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+  .main-header {
+    margin: 150px;
+    width: 75%;
+  }
+  .main-header, main {
+    margin-top: 240px;
+  }
 }
