@@ -6,6 +6,9 @@
   border: solid 4px;
   margin-top: 50px;
   padding: 10px;
+}
+
+.tweet-container article:hover {
   box-shadow: 7px 6px 0 0 #c5c3c3;
 }
 

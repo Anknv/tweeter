@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -46,6 +46,26 @@ const renderTweets = function(tweets) {
 };
 
 $(document).ready(function() {
+
+  const tweetBox = $('#tweet-text');
+
+  function updateCounter() {
+    //hides the errors when modifying the text
+    $('section.new-tweet .alert-error').hide();
+    const count = 140 - tweetBox.val().length;
+    const countEl = $('.new-tweet .new-tweet-button .counter');
+    countEl.text(count);
+    //red class makes the text red
+    if (count < 0) {
+      countEl.addClass('red');
+    } else {
+      countEl.removeClass('red');
+    }
+  }
+
+  //input event detects the correct length of the input and updates the counter
+  tweetBox.on('input', updateCounter);
+
   //gets tweets JSON and renders them
   const loadTweets = function() {
     $.ajax('/tweets', { method: 'GET' })
@@ -77,6 +97,7 @@ $(document).ready(function() {
       .then(function() {
         //empties the form inputs
         formEl.reset();
+        updateCounter();
         loadTweets();
       });
   });
